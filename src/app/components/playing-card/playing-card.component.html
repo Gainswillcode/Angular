@@ -1,0 +1,32 @@
+
+<div id="card">
+  <div id="inside"  [style.background-color]="backgroundColor()">
+    <header>
+      <div class="left">
+        <div id="name">{{monster().name}}</div>
+      </div>
+      <div class="right">
+        <div id="hp">{{monster().hp}}</div>
+        <img class="energy icon" [src]="MonsterTypeIcon()" width="15" height="15">
+      </div>
+    </header>
+    <figure class="figure">
+      <img [src]="monster().image">
+      <figcaption id="art">{{monster().figureCaption}}</figcaption>
+    </figure>
+    <div id="capacities">
+      <div class="capacity">
+        <div class="main">
+          <div class="coast">
+            <img class="icon energy" src="img/pngtree-vector-plus-icon-png-image_515260.jpg" width="15" height="15">
+            <img class="icon energy" src="img/pngtree-vector-plus-icon-png-image_515260.jpg" width="15" height="15">
+          </div>
+          <div class="name">{{monster().attackName}}</div>
+          <div class="damage">{{monster().attackStrength}}</div>
+        </div>
+      </div>
+      <div class="description">
+        {{monster().attackDescription}} </div>
+    </div>
+  </div>
+</div>
