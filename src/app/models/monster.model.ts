@@ -1,6 +1,7 @@
 import { MonsterType } from "../utils/monster.utils";
 
 export class Monster{
+  id : number = 1;
   name: string = 'My Monster';
   image: string = "img/496.png";
   type: MonsterType = MonsterType.FIRE;
@@ -12,6 +13,6 @@ export class Monster{
 
 
   copy():Monster{
-    return Object.assign(new Monster, this);
+    return Object.assign(new Monster(), this);
   }
 }

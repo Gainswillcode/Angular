@@ -1,9 +1,10 @@
 import { PlayingCardComponent } from './components/playing-card/playing-card.component';
-import { Component, computed, effect, model, signal } from '@angular/core';
+import { Component, computed, effect, inject, model, signal } from '@angular/core';
 import { Monster } from './models/monster.model';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MonsterType } from './utils/monster.utils';
 import { CommonModule } from '@angular/common';
+import { MonsterService } from './services/monster.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
 
+  monsterService = inject(MonsterService);
 
   monsters! : Monster[];
   // count : number = 0;
@@ -32,44 +34,9 @@ export class AppComponent {
     // effect(()=>{
     //   console.log(this.selectedMonster());
     // })
-    this.monsters = [];
 
-   const monster1 = new Monster();
-    monster1.name = "pikachu";
-    monster1.image = "img/pokemon-pikachu-neon-i71936.jpg";
-    monster1.type = MonsterType.ELECTRIC;
-    monster1.hp = 65;
-    monster1.figureCaption = "N° 001 Monster";
-    monster1.attackName = "Pik thunder"
-    this.monsters.push(monster1);
-
-    const monster2 = new Monster();
-    monster2.name = "Bulbasaur";
-    monster2.image = "img/pokemon-bulbasaur.jpg";
-    monster2.type = MonsterType.PLANT;
-    monster2.hp = 50;
-    monster2.figureCaption ="N° 002 Monster";
-    monster2.attackName ="discovery";
-    this.monsters.push(monster2);
-
-    const monster3 = new Monster();
-    monster3.name = "Bulbasaur";
-    monster3.image = "img/496.png";
-    monster3.type = MonsterType.FIRE;
-    monster3.hp = 50;
-    monster3.figureCaption ="N° 003 Monster";
-    monster3.attackName ="Bulbasaur-kaho";
-    this.monsters.push(monster3);
-
-    const monster4 = new Monster();
-    monster4.name = "turtwig";
-    monster4.image = "img/turtwig-300x300.png";
-    monster4.type = MonsterType.WATER;
-    monster4.hp = 50;
-    monster4.figureCaption ="N° 004 Monster";
-    monster4.attackName ="turtwig";
-    this.monsters.push(monster4);
-
+    //gatAll monsters
+    this.monsters = this.monsterService.getAll();
   }
 
   // increaseCount(){
